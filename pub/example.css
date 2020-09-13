@@ -1,0 +1,76 @@
+.black {
+    color: black;
+}
+
+.blue {
+    color: rgb(6, 133, 245);
+}
+
+.green {
+    color: #4CAF50
+}
+
+.yellow {
+    color: rgb(254, 121, 5)
+}
+
+.grey {
+    color: rgb(130, 127, 127)
+}
+
+.red {
+    color: red;
+    font-weight: bold;
+}
+
+.explaination{
+    font-family: 'Rowdies', cursive; 
+    display: inline-block; 
+    float: left;
+    width: 650px;
+    margin-left: 50px;
+}
+
+.container{
+    display: block;
+    width: max-content;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.code{
+    
+}
+
+.codeContainer{
+    background-color: whitesmoke;
+    width: 650px;
+    height:480px;
+    float: left;
+}
+
+/* navigation bar related CSS is copied from https://www.w3schools.com/howto/howto_js_topnav.asp */
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }

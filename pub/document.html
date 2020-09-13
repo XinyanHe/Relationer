@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ 	<meta charset="utf-8">
+    <title>API for Relationer.js</title>
+    <link rel="stylesheet" type="text/css" href="document.css">
+    <!-- <script defer type="text/javascript" src="relationer.js"></script>
+    <script defer type="text/javascript" src="examples.js"></script> -->
+ </head>
+
+ <!-- Used only when display the header of this html -->
+ <link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+ <body>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Navgation bar is copied from  https://www.w3schools.com/howto/howto_js_topnav.asp-->
+  <div class="topnav">
+    <a class="active" href = "https://relationer.herokuapp.com">Examples</a>
+    <a href = "https://relationer.herokuapp.com/document.html">Documentation</a>
+  </div>
+
+  </div>
+
+   <h1 style="text-align:center; font-family: 'Rowdies', cursive;">API for Relationer.js</h1>
+   <h3 style="text-align:center; font-family: 'Roboto Condensed', sans-serif;">Relationer is a javascript library for building the network graphs.
+    Use it whenever you want to generate a network graph for showing different object’s relationships.
+  </h3>
+
+  <h2 class="h2"> Get Started</h2>
+  <div class = "modules">
+    <div class="startCode">
+      <code>
+        <span class = 'grey'>//First, include the relationer.js in your library.</span></br>
+        <code>&ltscript src="relationer.js"/&gt&ltscript&gt</code></br>
+        <span class = 'grey'>//Get the body element of the current DOM</span></br>
+        <span class="blue">const </span>
+        <span>body = document.</span><span class = "red">querySelector</span><span class= "green">('body');</span></br>
+        <span class = 'grey'>//Create a network</span></br>
+        network = new Network();</br>
+        <span class = 'grey'>//Create a canvas to display your network.</span></br>
+        canvas = new Canvas(network);</br>
+        <span class = 'grey'>//Pass in the infomation and generate your nodes.</span></br>
+        <span class = 'blue' >const </span><span>node1 = network.</span><span class ='red'>createNode</span><span class = 'green'>(id,color,x-position,y-position,radius,shape)</span></br>
+        <span class = 'grey'>//If the node you want to generate requires a profile, you should also pass in the image</span></br>
+        <span class = 'blue' >const </span><span>node2 = network.</span><span class ='red'>createNode</span><span class = 'green'>(id,color,x-position,y-position,radius,'image')</span></br>
+        <span class = 'blue' >var </span><span>img = new Image();</span></br>
+        <span>node2.</span><span class ='red'>setImage</span><span class = 'green'>(img,'src.jpg')</span></br>
+        <span class = 'grey'>//Generate a edge if you want</span></br>
+        <span class = 'blue' >const </span><span>edge = network.</span><span class ='red'>createEdge</span><span class = 'green'>(edgeId,startNode,endNode)</span></br>
+        <span class = 'grey'>//Finally, draw the network graph!!</span></br>
+        <span>network.draw(canvas);</span></br>
+        <span>body.append(canvas.div);</span>
+      </code>
+    </div>
+  </div>
+
+
+  <h2 class="h2"> Objects</h2>
+  <h3 class="h3">The following are a list of objects used by the library.</h3>
+  <div class = "modules">
+    <h3 class="methodtitle">Network</h3>
+    <div class="codeContainer">
+      <code>
+        <span class = 'grey'>//Nothing need to pass in when create a new object</br></span>
+        <span class="blue">constructor()</span>
+        <span>
+          {</br>
+            <span class = 'grey'>//Used to store all the node object in this network.</br></span>
+            nodesArray = [Node node1, Node node2..];</br>
+            <span class = 'grey'>//Used to store all the edge object in this network.</br></span>
+            <span>edgesArray = [Edge edge1, Edge edge2..];</br>}
+        </span>
+      </code>
+    </div>
+  </div>
+
+  <div class = "modules">
+    <h3 class="methodtitle">Canvas</h3>
+    <div class="codeContainer">
+      <code>
+        <span class="blue">constructor(Network network)</span>
+        <span>
+          {</br>
+            <span class = 'grey'>//current mouse position</br></span>
+            mouse = {x:0,y:0};</br>
+            <span class = 'grey'>//network which drawn on this canvas.</br></span>
+            network;(Network)</br>
+            <span class = 'grey'>//The DOM element div of this canvas that will be added to our document.</br></span>
+            div;(DOM element)</br>
+            <span class = 'grey'>//flag for whether there is a node being dragged</br></span>
+            dragFlag;(Bool)</br>
+          }
+        </span>
+      </code>
+    </div>
+  </div>
+
+  <div class = "modules">
+    <h3 class="methodtitle">Edge</h3>
+    <div class="codeContainer">
+      <code>
+        <span class="blue">constructor(id,from,to)</span>
+        <span>
+          {</br>
+            <span class = 'grey'>//Id of the edge</br></span>
+            id;(Integer)</br>
+            <span class = 'grey'>//node where edge start</br></span>
+            from;(Node)</br>
+            <span class = 'grey'>//node where edge end</br></span>
+            to;(Node)</br>
+            <span class = 'grey'>//flag for whether the edge is being lightend</br></span>
+            lighten;(Bool)</br>
+          }
+        </span>
+      </code>
+    </div>
+  </div>
+
+  <div class = "modules">
+    <h3 class="methodtitle">Node</h3>
+    <div class="nodecodeContainer">
+      <code>
+        <span class="blue">constructor(id,color,x,y,r,shape)</span>
+        <span>
+          {</br>
+            <span class = 'grey'>//Id of the node</br></span>
+            id;(Integer)</br>
+            <span class = 'grey'>//background color of the node</br></span>
+            color;(String)</br>
+            <span class = 'grey'>//radius of the node</br></span>
+            r;(Integer)</br>
+            <span class = 'grey'>//shape of the node,there are 3 types of shape: circle, square and image. Where the shape image is for user to upload an image.</br></span>
+            shape;(String)</br>
+            <span class = 'grey'>//x-position of the node</br></span>
+            x;(Integer)</br>
+            <span class = 'grey'>//y-position of the node</br></span>
+            y;(Integer)</br>
+            <span class = 'grey'>//an array of Edge elements</br></span>
+            edgesArray[Edge edge1, ..];</br>
+            <span class = 'grey'>//flag for whether the lable is visible or not</br></span>
+            labelvisible;(Bool)</br>
+            <span class = 'grey'>//flag for whether the node is being dragged or not</br></span>
+            isdragging;(Bool)</br>
+          }
+        </span>
+      </code>
+    </div>
+  </div>
+  
+
+  <h2 class="h2"> Methods</h2>
+  <h3 class="h3">The following are a list of methods grouped by different objects.</h3>
+  <div class = "modules">
+    <h3 class="methodtitle">Network</h3>
+    <div class="codeContainer">
+      <code>
+        <span class = 'grey'>//Create a node in this network.</span></br>
+        Network.<span class="red">createNode</span><span class="green">(id,color,x,y,r,shape)</span></br>
+        <span class = 'grey'>//Create an edge in this network.</span></br>
+        Network.<span class="red">createEdge</span><span class="green">(id,from,to)</span></br>
+        <span class = 'grey'>//Display the network on a canvas.</span></br>
+        Network.<span class="red">draw</span><span class="green">(canvas)</span></br>
+        <span class = 'grey'>//Generate a random network.</span></br>
+        Network.<span class="red">randomGenerator</span><span class="green">()</span></br>
+      </code>
+    </div>
+  </div>
+
+<div class="modules">
+  <h3 class="methodtitle">Canvas</h3>
+  <p>Generate a canvas element in DOM</p>
+  <div class="codeContainer">
+    <code>
+      <span class = 'grey'>//Clear the canvas.</span></br>
+      Canvas.<span class="red">createNode</span><span class="green">(id,color,x,y,r,shape)</span></br>
+      <span class = 'grey'>//Set the height and the width of canvas</span></br>
+      Canvas.<span class="red">createEdge</span><span class="green">(height,width)</span></br>
+      <span class = 'grey'>//Set the background color of current canvas.</span></br>
+      Canvas.<span class="red">drawBackground</span><span class="green">(color)</span></br>
+    </code>
+  </div>
+</div>
+
+<div class="modules">
+  <h3 class="methodtitle">Event for canvas</h3>
+  <p>Here includes the event for canvas. They have been implemented for all the networks, you don't need to specifically call them by yourself.</p>
+  <div class="codeContainer">
+    <code>
+      <span class = 'grey'>//Triggered when you press your mouse down.</span></br>
+      <span class = 'grey'>//If the click position is within the nodes, we will enable the drag flag.</span></br>
+      Canvas.<span class="red">moveDown</span><span class="green">(event)</span></br>
+      <span class = 'grey'>//Triggered when you press your mouse down. We will set all drag flag to false.</span></br>
+      Canvas.<span class="red">moveUp</span><span class="green">(event)</span></br>
+      <span class = 'grey'>//Triggered when you move the mouse during dragging.</span></br>
+      Canvas.<span class="red">mouseMove</span><span class="green">(event)</span></br>
+      <span class = 'grey'>//Triggered when you double click the mouse.</span></br>
+      Canvas.<span class="red">dbClick</span><span class="green">(event)</span></br>
+    </code>
+  </div>
+</div>
+
+<div class="modules">
+  <h3 class="methodtitle">Edge</h3>
+  <div class="codeContainer">
+    <code>
+      <span class = 'grey'>//Draw the current edge on target canvas.</span></br>
+      Edge.<span class="red">drawEdge</span><span class="green">(context,lineWidth)</span></br>
+      <span class = 'grey'>//Let the current edge be lightend.</span></br>
+      Edge.<span class="red">lightupEdge</span><span class="green">()</span></br>
+      <span class = 'grey'>//Let the current edge be lightend down.</span></br>
+      Edge.<span class="red">lightdownEdge</span><span class="green">()</span></br>
+    </code>
+  </div>
+</div>
+
+<div class="modules">
+  <h3 class="methodtitle">Node</h3>
+  <div class="codeContainer">
+    <code>
+      <span class = 'grey'>//Set the image for the current node.</span></br>
+      Node.<span class="red">setImage</span><span class="green">(img,src)</span></br>
+      <span class = 'grey'>//Draw the current node on target canvas.</span></br>
+      Node.<span class="red">drawNode</span><span class="green">(context)</span></br>
+      <span class = 'grey'>//We would display the current node's id.</span></br>
+      Node.<span class="red">drawLabel</span><span class="green">(context)</span></br>
+      <span class = 'grey'>//We would set the current node's label flag to false.</span></br>
+      Node.<span class="red">showLabel</span><span class="green">(context)</span></br>
+      <span class = 'grey'>//We would set the current node's label flag to true.</span></br>
+      Node.<span class="red">disableLabel</span><span class="green">(context)</span></br>
+      <span class = 'grey'>//Light up all edges of the current node.</span></br>
+      Node.<span class="red">lightupEdges</span><span class="green">()</span></br>
+      <span class = 'grey'>//Light down all edges of the current node.</span></br>
+      Node.<span class="red">lightdownEdges</span><span class="green">()</span></br>
+    </code>
+  </div>
+</div>
+ </body>
+
+</html>
